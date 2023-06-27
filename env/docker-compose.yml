@@ -1,0 +1,85 @@
+version: "3.8"
+services:
+  mysql-nacos:
+    build:
+      context: ./mysql
+      dockerfile: ./Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=Root.1996
+      - MYSQL_DATABASE=nacos
+      - MYSQL_USER=nacos
+      - MYSQL_PASSWORD=nacos
+    volumes:
+      - E:\data\docker\mysql:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+
+  nacos-standalone-mysql:
+    build:
+      context: ./nacos
+      dockerfile: ./Dockerfile
+    ports:
+      - "8848:8848"
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_SERVICE_HOST=mysql-nacos
+      - MYSQL_SERVICE_DB_NAME=nacos
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_USER=nacos
+      - MYSQL_SERVICE_PASSWORD=nacos
+      - MYSQL_SERVICE_DB_PARAM=characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+      - NACOS_AUTH_IDENTITY_KEY=2222
+      - NACOS_AUTH_IDENTITY_VALUE=2xxx
+      - NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789
+    depends_on:
+      - mysql-nacos
+    restart: on-failure
+
+  mq:
+    build:
+      context: ./rabbitmq
+      dockerfile: ./Dockerfile
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  es:
+    build:
+      context: elasticsearch
+      dockerfile: ./Dockerfile
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.type=single-node"
+    volumes:
+      - E:\data\docker\es\data:/usr/share/elasticsearch/data
+    privileged: true
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  kibana:
+    build:
+      context: ./kibana
+      dockerfile: ./Dockerfile
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es:9200
+    ports:
+      - "5601:5601"
+
+  seate-server:
+    build:
+      context: ./seate-server
+      dockerfile: ./Dockerfile
+    volumes:
+      - E:\data\docker\seate:/seata-server/resources
+    environment:
+      - SEATA_PORT=8091
+      - STORE_MODE=db
