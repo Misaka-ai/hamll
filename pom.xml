@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hmall</groupId>
-    <artifactId>hamll-parent</artifactId>
+    <artifactId>hmall</artifactId>
     <version>1.0</version>
     <modules>
         <module>user-service</module>
