@@ -83,3 +83,5 @@ services:
     environment:
       - SEATA_PORT=8091
       - STORE_MODE=db
+    ports:
+      - "8091:8091"
