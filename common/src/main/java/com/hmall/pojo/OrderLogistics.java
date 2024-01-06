@@ -1,6 +1,5 @@
-package com.hmall.order.pojo;
+package com.hmall.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -12,11 +11,11 @@ import java.util.Date;
  */
 @Data
 @TableName("tb_order_logistics")
-public class OrderLogistics{
+public class OrderLogistics {
     /**
      * 订单id，与订单表一对一
      */
-    @TableId(type = IdType.INPUT)
+    @TableId
     private Long orderId;
     /**
      * 物流单号
@@ -33,7 +32,7 @@ public class OrderLogistics{
     /**
      * 手机号
      */
-    private String phone;
+    private String mobile;
     /**
      * 省
      */

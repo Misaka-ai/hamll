@@ -12,6 +12,9 @@
         <module>order-service</module>
         <module>item-service</module>
         <module>feign-api</module>
+        <module>gateway</module>
+        <module>search-service</module>
+        <module>common</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -30,10 +33,17 @@
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
         <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
         <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
+        <elasticsearch.version>7.12.1</elasticsearch.version>
+        <fastjson.version>2.0.37</fastjson.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
             <!-- springCloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

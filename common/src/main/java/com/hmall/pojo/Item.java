@@ -1,4 +1,4 @@
-package com.hmall.item.pojo;
+package com.hmall.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -27,4 +27,21 @@ public class Item {
     private Boolean isAD;//商品状态 1-正常，2-下架
     private Date createTime;//创建时间
     private Date updateTime;//更新时间
+
+    public enum Status {
+        /**
+         * 正常
+         */
+        NORMAL(1),
+        /**
+         * 下架
+         */
+        OFF_SHELF(2);
+
+        public final int status;
+
+        Status(int status) {
+            this.status = status;
+        }
+    }
 }

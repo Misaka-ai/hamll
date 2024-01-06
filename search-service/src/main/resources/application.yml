@@ -1,0 +1,25 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: search-service
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+
+  rabbitmq:
+    host: 192.168.222.200
+    port: 5672
+    virtual-host: /
+    username: rabbitmq
+    password: rabbitmq
+    listener:
+      simple:
+        prefetch: 1
+  elasticsearch:
+    rest:
+      uris:
+        - http://192.168.222.200:9200
+feign:
+  httpclient:
+    enabled: true

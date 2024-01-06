@@ -1,9 +1,10 @@
-package com.hmall.common.dto;
+package com.hmall.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,9 +18,9 @@ public class PageDTO<T> {
     /**
      * 总条数
      */
-    private Long total;
+    private Long total = 10L;
     /**
      * 当前页数据
      */
-    private List<T> list;
+    private List<T> list = Collections.emptyList();
 }

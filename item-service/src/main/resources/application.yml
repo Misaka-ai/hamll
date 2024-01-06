@@ -2,17 +2,23 @@ server:
   port: 8081
 spring:
   application:
-    name: itemservice
+    name: item-service
   datasource:
-    url: jdbc:mysql://localhost:3306/test02?useSSL=false
+    url: jdbc:mysql://localhost:3306/hmall?useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: 123
+    password: Root.1996
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       server-addr: localhost:8848 # nacos地址
+  rabbitmq:
+    host: 192.168.222.200
+    port: 5672
+    virtual-host: /
+    username: rabbitmq
+    password: rabbitmq
+
 mybatis-plus:
-  type-aliases-package: com.hmall.item.pojo
   configuration:
     map-underscore-to-camel-case: true
   global-config:
@@ -24,3 +30,44 @@ logging:
     com.hmall: debug
   pattern:
     dateformat: HH:mm:ss:SSS
+#  Seata配置
+seata:
+  config:
+    # 配置文件
+    nacos:
+      server-addr: ${spring.cloud.nacos.server-addr}
+      namespace: ""
+      group: SEATA_GROUP
+      data-id: seata-client.properties
+      username: nacos
+      password: nacos
+    type: nacos
+  #  注册中心配置
+  registry:
+    #  注册中心类型
+    type: nacos
+    #  nacos配置
+    nacos:
+      #  nacos地址
+      server-addr: ${spring.cloud.nacos.server-addr}
+      #  nacos账号
+      username: nacos
+      #  nacos密码
+      password: nacos
+      # 命名空间 "" 表示 public
+      namespace: ""
+      # 分组名称
+      group: SEATA_GROUP
+  # 事务分组配置，这里配置的名称是任意取的，详情见：https://seata.io/zh-cn/docs/user/txgroup/transaction-group.html
+  tx-service-group: seata-demo-group # 集群的意思
+  service:
+    # 事务分组映射
+    vgroup-mapping:
+      seata-demo-group: HF
+feign:
+  httpclient:
+    enabled: true
+  client:
+    config:
+      default:
+        logger-level: full

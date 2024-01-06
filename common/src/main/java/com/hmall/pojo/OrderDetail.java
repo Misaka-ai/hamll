@@ -1,4 +1,4 @@
-package com.hmall.order.pojo;
+package com.hmall.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -30,7 +30,7 @@ public class OrderDetail {
     /**
      * 商品标题
      */
-    private String title;
+    private String name;
     /**
      * 商品单价
      */
