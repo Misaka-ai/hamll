@@ -4,9 +4,9 @@ spring:
   application:
     name: itemservice
   datasource:
-    url: jdbc:mysql://localhost:3306/test02?useSSL=false
+    url: jdbc:mysql://localhost:3306/hmall?useSSL=false
     username: root
-    password: 123
+    password: xy244812
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
