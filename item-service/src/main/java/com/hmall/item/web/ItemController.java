@@ -47,11 +47,19 @@ public class ItemController {
     }
 
     /*
-    * 修改商品
-    * */
+     * 修改商品
+     * */
     @PutMapping()
-    public void updateItem(@RequestBody Item item){
+    public void updateItem(@RequestBody Item item) {
         itemService.updateItem(item);
+    }
+
+    /*
+     * 新增商品
+     **/
+    @PostMapping()
+    public void insertItem(@RequestBody Item item) {
+        itemService.insertItem(item);
     }
 
 

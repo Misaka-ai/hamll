@@ -29,4 +29,9 @@ public interface IItemService extends IService<Item> {
      * 修改商品
      * */
     void updateItem(Item item);
+
+    /*
+     * 新增商品
+     * */
+    void insertItem(Item item);
 }

@@ -53,4 +53,11 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
         item.setUpdateTime(new Date());
         itemMapper.updateById(item);
     }
+
+    @Override
+    public void insertItem(Item item) {
+        item.setCreateTime(new Date());
+        item.setUpdateTime(new Date());
+        itemMapper.insert(item);
+    }
 }
