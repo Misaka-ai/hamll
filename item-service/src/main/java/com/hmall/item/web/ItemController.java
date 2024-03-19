@@ -29,19 +29,30 @@ public class ItemController {
     public Item getByid(@PathVariable Long id) {
         return itemService.getByOneId(id);
     }
+
     /*
      * 上下架商品
      * */
     @PutMapping("status/{id}/{status}")
-    public void updateStatus(@PathVariable Long id,@PathVariable Integer status){
-        itemService.updateStatus(id,status);
+    public void updateStatus(@PathVariable Long id, @PathVariable Integer status) {
+        itemService.updateStatus(id, status);
     }
 
     /*
-    * 根据id删除商品
-    * */
+     * 根据id删除商品
+     * */
     @DeleteMapping("{id}")
-    public void deleteItenById(@PathVariable Long id){
+    public void deleteItenById(@PathVariable Long id) {
         itemService.deleteItenById(id);
     }
+
+    /*
+    * 修改商品
+    * */
+    @PutMapping()
+    public void updateItem(@RequestBody Item item){
+        itemService.updateItem(item);
+    }
+
+
 }

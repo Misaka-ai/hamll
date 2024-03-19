@@ -24,4 +24,9 @@ public interface IItemService extends IService<Item> {
      *根据id删除商品
      * */
     void deleteItenById(Long id);
+
+    /*
+     * 修改商品
+     * */
+    void updateItem(Item item);
 }

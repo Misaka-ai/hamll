@@ -10,6 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Service
 @Slf4j
 public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemService {
@@ -42,5 +46,11 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
     @Override
     public void deleteItenById(Long id) {
         itemMapper.deleteById(id);
+    }
+
+    @Override
+    public void updateItem(Item item) {
+        item.setUpdateTime(new Date());
+        itemMapper.updateById(item);
     }
 }
