@@ -23,7 +23,19 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
         PageDTO<Item> itemPageDTO = new PageDTO<>();
         itemPageDTO.setTotal(itemPage.getTotal());
         itemPageDTO.setList(itemPage.getRecords());
-
         return itemPageDTO;
+    }
+
+    @Override
+    public Item getByOneId(Long id) {
+        return itemMapper.selectById(id);
+    }
+
+    @Override
+    public void updateStatus(Long id, Integer status) {
+        Item item = new Item();
+        item.setId(id);
+        item.setStatus(status);
+        itemMapper.updateById(item);
     }
 }

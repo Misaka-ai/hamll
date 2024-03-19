@@ -5,5 +5,18 @@ import com.hmall.common.dto.PageDTO;
 import com.hmall.item.pojo.Item;
 
 public interface IItemService extends IService<Item> {
+    /*
+     * 分页查询
+     * */
     PageDTO<Item> pageQuery(Integer page, Integer size);
+
+    /*
+     * 更具id查询商品详情
+     * */
+    Item getByOneId(Long id);
+
+    /*
+     *根据id上盖商品状态
+     * */
+    void updateStatus(Long id, Integer status);
 }
