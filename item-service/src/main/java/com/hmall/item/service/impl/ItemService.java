@@ -38,4 +38,9 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
         item.setStatus(status);
         itemMapper.updateById(item);
     }
+
+    @Override
+    public void deleteItenById(Long id) {
+        itemMapper.deleteById(id);
+    }
 }

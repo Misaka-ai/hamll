@@ -36,4 +36,12 @@ public class ItemController {
     public void updateStatus(@PathVariable Long id,@PathVariable Integer status){
         itemService.updateStatus(id,status);
     }
+
+    /*
+    * 根据id删除商品
+    * */
+    @DeleteMapping("{id}")
+    public void deleteItenById(@PathVariable Long id){
+        itemService.deleteItenById(id);
+    }
 }

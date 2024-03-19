@@ -19,4 +19,9 @@ public interface IItemService extends IService<Item> {
      *根据id上盖商品状态
      * */
     void updateStatus(Long id, Integer status);
+
+    /*
+     *根据id删除商品
+     * */
+    void deleteItenById(Long id);
 }
