@@ -1,8 +1,20 @@
 server:
   port: 8089
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
   datasource:
-    url: jdbc:mysql://localhost:3306/hotel?useSSL=false&allowPublicKeyRetrieval=true
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+      idle-timeout: 300000
+      max-lifetime: 600000
+      minimum-idle: 5
+      initialization-fail-timeout: 1
+      connection-test-query: SELECT 1
+    url: jdbc:mysql://localhost:3306/hmall?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: xy244812
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,7 +22,7 @@ spring:
     name: searchservice
   elasticsearch:
     rest:
-      uris: http://192.168.17.133:9200
+      uris: http://192.168.17.130:9200
   rabbitmq:
     virtual-host: /
     host: 192.168.17.130

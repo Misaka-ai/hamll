@@ -8,7 +8,7 @@ public interface IItemService extends IService<Item> {
     /*
      * 分页查询
      * */
-    PageDTO<Item> pageQuery(Integer page, Integer size);
+    PageDTO<?> pageQuery(Integer page, Integer size);
 
     /*
      * 更具id查询商品详情

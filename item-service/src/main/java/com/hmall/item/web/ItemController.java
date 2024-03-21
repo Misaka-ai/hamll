@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("item")
+@RequestMapping("/item")
 public class ItemController {
 
     @Autowired
@@ -16,8 +16,8 @@ public class ItemController {
     /*
      * 分页查询
      * */
-    @GetMapping("list")
-    public PageDTO<Item> list(Integer page, Integer size) {
+    @GetMapping("/list")
+    public PageDTO<?> list(Integer page, Integer size) {
         return itemService.pageQuery(page, size);
     }
 

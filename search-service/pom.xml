@@ -55,6 +55,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.hmall</groupId>
+            <artifactId>item-service</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
+
 
     </dependencies>
 

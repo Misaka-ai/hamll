@@ -28,6 +28,8 @@ public class ItemDoc {
 
     private List<String> suggestion;
 
+    private Boolean isAD;//是否为广告
+
     public  ItemDoc(Item item) {
         this.id = item.getId();
         this.name = item.getName();
