@@ -44,7 +44,7 @@ class SearchServiceImplTest {
 
         while (true) {
             // Create Page object
-            Page<Item> pageItem = new Page<>(pageNum, 100);
+            Page<Item> pageItem = new Page<>(pageNum, 1000);
             itemMapper.selectPage(pageItem, null);
 
             // Process the hotels

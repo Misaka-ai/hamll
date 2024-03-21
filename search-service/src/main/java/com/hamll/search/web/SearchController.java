@@ -11,24 +11,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/search")
 @RequiredArgsConstructor
 public class SearchController {
 
-private final SearchService searchService;
+    private final SearchService searchService;
 
+    /*
+     * 基本搜索功能
+     * */
     @PostMapping("/list")
-    public PageDTO<ItemIndexVO> searchList(@RequestBody SearchDTO searchDTO){
+    public PageDTO<ItemIndexVO> searchList(@RequestBody SearchDTO searchDTO) {
         return searchService.searchList(searchDTO);
     }
 
-
-
-
-
-
+    /*
+     * 条件过滤
+     * */
+    @PostMapping("/filters")
+    public Map<String, List<String>> filters(@RequestBody SearchDTO searchDTO) {
+        return searchService.filters(searchDTO);
+    }
 
 
 }

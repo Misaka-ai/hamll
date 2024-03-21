@@ -11,4 +11,6 @@ public class ItemIndexVO {
     private String image;//商品图片
     private String category;//分类名称
     private String brand;//品牌名称
+    private Integer sold;//销量
+
 }
