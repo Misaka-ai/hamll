@@ -229,7 +229,6 @@ public class SearchServiceImpl implements SearchService {
         if (StringUtils.isEmpty(key)) {
             return new ArrayList<>();
         }
-
         List<String> suggestionList;
         try {
             searchRequest.source()
