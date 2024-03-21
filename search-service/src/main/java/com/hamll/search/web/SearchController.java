@@ -5,10 +5,7 @@ import com.hamll.search.service.SearchService;
 import com.hamll.search.vo.ItemIndexVO;
 import com.hmall.common.dto.PageDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -35,6 +32,12 @@ public class SearchController {
     public Map<String, List<String>> filters(@RequestBody SearchDTO searchDTO) {
         return searchService.filters(searchDTO);
     }
-
+/*
+* 自动补全
+* */
+    @GetMapping("/suggestion")
+    public List<String> suggestion(String key){
+        return searchService.suggestion(key);
+    }
 
 }

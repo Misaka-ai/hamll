@@ -18,4 +18,9 @@ public interface SearchService {
      * 条件过滤
      * */
     Map<String, List<String>> filters(SearchDTO searchDTO);
+
+    /*
+     * 自动补全
+     * */
+    List<String> suggestion(String key);
 }

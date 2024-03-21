@@ -27,6 +27,10 @@ import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
+import org.elasticsearch.search.suggest.Suggest;
+import org.elasticsearch.search.suggest.SuggestBuilder;
+import org.elasticsearch.search.suggest.SuggestBuilders;
+import org.elasticsearch.search.suggest.completion.CompletionSuggestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -217,6 +221,37 @@ public class SearchServiceImpl implements SearchService {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public List<String> suggestion(String key) {
+        SearchRequest searchRequest = new SearchRequest(HMALL);
+        if (StringUtils.isEmpty(key)) {
+            return new ArrayList<>();
+        }
+
+        List<String> suggestionList;
+        try {
+            searchRequest.source()
+                    .suggest(
+                            new SuggestBuilder()
+                                    .addSuggestion("suggestionSugg"
+                                            , SuggestBuilders.completionSuggestion("suggestion")
+                                                    .prefix(key)
+                                                    .skipDuplicates(true)
+                                                    .size(10)
+                                    )
+                    );
+            SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+
+            Suggest responseSuggest = searchResponse.getSuggest();
+            CompletionSuggestion suggestionSugg = responseSuggest.getSuggestion("suggestionSugg");
+            suggestionList = suggestionSugg.getOptions().stream()
+                    .map(option -> option.getText().string()).collect(Collectors.toList());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return suggestionList;
     }
 
     private BoolQueryBuilder getBoolQueryBuilder(String category, String brand, Integer minPrice, Integer maxPrice) {

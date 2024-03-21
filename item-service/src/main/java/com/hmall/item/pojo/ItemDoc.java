@@ -1,10 +1,10 @@
 package com.hmall.item.pojo;
 
 
-
 import lombok.Data;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class ItemDoc {
 
     private Boolean isAD;//是否为广告
 
-    public  ItemDoc(Item item) {
+    public ItemDoc(Item item) {
         this.id = item.getId();
         this.name = item.getName();
         this.price = item.getPrice();
@@ -39,8 +39,8 @@ public class ItemDoc {
         this.brand = item.getBrand();
         this.sold = item.getSold();
         this.commentCount = item.getCommentCount();
-        this.suggestion = Arrays.asList(this.name, this.brand);
-
-
+        this.suggestion = new ArrayList<>();
+        suggestion.add(this.name);
+        suggestion.add(this.brand);
     }
 }
