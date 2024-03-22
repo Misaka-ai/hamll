@@ -13,7 +13,7 @@ public class OrderDetail {
     /**
      * 订单编号
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
     /**
      * 订单编号
@@ -30,7 +30,7 @@ public class OrderDetail {
     /**
      * 商品标题
      */
-    private String title;
+    private String name;
     /**
      * 商品单价
      */

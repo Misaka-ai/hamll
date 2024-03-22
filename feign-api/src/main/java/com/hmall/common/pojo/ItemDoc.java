@@ -1,4 +1,4 @@
-package com.hmall.pojo;
+package com.hmall.common.pojo;
 
 
 import lombok.Data;

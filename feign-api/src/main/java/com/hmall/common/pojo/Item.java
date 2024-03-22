@@ -1,4 +1,4 @@
-package com.hmall.pojo;
+package com.hmall.common.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -6,11 +6,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @TableName("tb_item")
-public class Item {
+public class Item implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;//商品id
     private String name;//商品名称

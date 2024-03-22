@@ -9,7 +9,7 @@ public class OrderDTO {
 
     private Integer paymentType;//付款方式
 
-    private Integer addressId;//收货人地址ID
+    private Long addressId;//收货人地址ID
 
     private Long itemId;//商品ID
 }

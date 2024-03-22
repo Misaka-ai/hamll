@@ -1,6 +1,12 @@
 server:
   port: 8081
 spring:
+  rabbitmq:
+    virtual-host: /
+    host: 192.168.17.130
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
   application:
     name: itemservice
   datasource:

@@ -1,3 +1,4 @@
+/*
 package com.hmall.common.thredLocal;
 
 public class GetUserId {
@@ -10,4 +11,4 @@ public class GetUserId {
     public static Long getId(){
         return threadLocal.get();
     }
-}
+}*/

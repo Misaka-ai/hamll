@@ -1,4 +1,4 @@
-package com.hmall.user.pojo;
+package com.hmall.common.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
