@@ -1,4 +1,4 @@
-package com.hmall.item.pojo;
+package com.hmall.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

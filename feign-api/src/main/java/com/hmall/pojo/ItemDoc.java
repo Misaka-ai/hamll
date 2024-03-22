@@ -1,11 +1,10 @@
-package com.hmall.item.pojo;
+package com.hmall.pojo;
 
 
 import lombok.Data;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Data

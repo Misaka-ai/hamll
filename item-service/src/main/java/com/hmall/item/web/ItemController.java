@@ -1,7 +1,7 @@
 package com.hmall.item.web;
 
 import com.hmall.common.dto.PageDTO;
-import com.hmall.item.pojo.Item;
+import com.hmall.pojo.Item;
 import com.hmall.item.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class ItemController {
      * 分页查询
      * */
     @GetMapping("/list")
-    public PageDTO<?> list(Integer page, Integer size) {
+    public PageDTO<Item> list(Integer page, Integer size) {
         return itemService.pageQuery(page, size);
     }
 

@@ -1,27 +1,16 @@
 package com.hmall.item.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hmall.common.dto.PageDTO;
 import com.hmall.item.mapper.ItemMapper;
-import com.hmall.item.pojo.Item;
-import com.hmall.item.pojo.ItemDoc;
+import com.hmall.pojo.Item;
 import com.hmall.item.service.IItemService;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.action.bulk.BulkRequest;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.Date;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executor;
 
 @Service
 @Slf4j
@@ -30,7 +19,7 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
     private ItemMapper itemMapper;
 
     @Override
-    public PageDTO<?> pageQuery(Integer page, Integer size) {
+    public PageDTO<Item> pageQuery(Integer page, Integer size) {
         Page<Item> itemPage = new Page<>(page, size);
         itemMapper.selectPage(itemPage, null);
         PageDTO<Item> itemPageDTO = new PageDTO<>();

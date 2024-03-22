@@ -2,13 +2,13 @@ package com.hmall.item.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.hmall.common.dto.PageDTO;
-import com.hmall.item.pojo.Item;
+import com.hmall.pojo.Item;
 
 public interface IItemService extends IService<Item> {
     /*
      * 分页查询
      * */
-    PageDTO<?> pageQuery(Integer page, Integer size);
+    PageDTO<Item> pageQuery(Integer page, Integer size);
 
     /*
      * 更具id查询商品详情
