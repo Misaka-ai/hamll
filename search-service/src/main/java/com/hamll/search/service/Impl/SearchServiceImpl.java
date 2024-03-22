@@ -1,8 +1,8 @@
 package com.hamll.search.service.Impl;
 
 
+
 import com.alibaba.fastjson.JSON;
-import com.alibaba.nacos.common.utils.StringUtils;
 import com.hamll.search.dto.SearchDTO;
 import com.hamll.search.service.SearchService;
 import com.hamll.search.vo.ItemIndexVO;
@@ -27,6 +27,7 @@ import org.elasticsearch.search.suggest.SuggestBuilders;
 import org.elasticsearch.search.suggest.completion.CompletionSuggestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.*;

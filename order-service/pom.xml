@@ -25,6 +25,12 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.hmall</groupId>
+            <artifactId>feign-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
         <!--nacos服务注册发现依赖-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
